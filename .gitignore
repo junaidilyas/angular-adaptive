@@ -1,0 +1,5 @@
+# IDE files
+.idea
+
+# Dependency directory
+bower_components/

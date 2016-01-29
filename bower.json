@@ -1,0 +1,26 @@
+{
+  "name": "angular-adaptive",
+  "authors": [
+    "Junaid Ilyas <junaidilyas1@gmail.com>"
+  ],
+  "description": "A hybrid between adaptive and responsive templating. Provides a directive to dynamically load device specific templates in a responsive manner.",
+  "main": "angular-adaptive.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "adaptive",
+    "responsive",
+    "templates"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/junaidilyas/angular-adaptive",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+  ],
+  "dependencies": {
+    "angular": "1.1.x - *"
+  }
+}
