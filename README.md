@@ -53,7 +53,7 @@ devices: [
 ]
 ```
 ## Usage
-By default, **angular-adaptive** provides two device configurations (`desktop` and `mobile`) based on the screen widths (See [Defaults](#Defaults)). The device names can be used as the attributes of the `adaptive` directive to provide the respective template file to render when the `mediaQuery` of a certain device is matched.
+By default, **angular-adaptive** provides two device configurations (`desktop` and `mobile`) based on the screen widths (See [Defaults](#defaults)). The device names can be used as the attributes of the `adaptive` directive to provide the respective template file to render when the `mediaQuery` of a certain device is matched.
 ```html
 <adaptive desktop="views/desktop/entity.html" mobile="views/mobile/entity.html"></adaptive>
 ```

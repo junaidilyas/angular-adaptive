@@ -105,8 +105,7 @@ window.matchMedia || (window.matchMedia = function() {
    * @author Junaid Ilyas <junaidilyas1@gmail.com>
    * @license MIT License, http://www.opensource.org/licenses/MIT
    */
-  var module = angular.module("angular-adaptive", []);
-  module.directive("adaptive", function($compile, $window, adaptiveConfig) {
+  angular.module("angular-adaptive", []).directive("adaptive", [ "$compile", "$window", "adaptiveConfig", function($compile, $window, adaptiveConfig) {
     var devices = adaptiveConfig.devices.slice(0);
     var templates = {};
     var linker = function(scope, element, attrs) {
@@ -141,8 +140,7 @@ window.matchMedia || (window.matchMedia = function() {
       restrict: "E",
       link: linker
     };
-  });
-  module.provider("adaptiveConfig", function() {
+  } ]).provider("adaptiveConfig", function() {
     var opts = {
       devices: [ {
         name: "desktop",

@@ -8,73 +8,71 @@
    * @author Junaid Ilyas <junaidilyas1@gmail.com>
    * @license MIT License, http://www.opensource.org/licenses/MIT
    */
-  var module = angular.module('angular-adaptive', []);
+  angular.module('angular-adaptive', [])
+    .directive('adaptive', ['$compile','$window','adaptiveConfig', function ($compile, $window, adaptiveConfig) {
+      var devices = adaptiveConfig.devices.slice(0);
+      var templates = {};
 
-  module.directive('adaptive', function ($compile, $window, adaptiveConfig) {
-    var devices = adaptiveConfig.devices.slice(0);
-    var templates = {};
+      var linker = function(scope, element, attrs) {
 
-    var linker = function(scope, element, attrs) {
-
-      angular.forEach(devices, function(device) {
-        device.viewTemplate = attrs[device.name];
-
-        if (device.viewTemplate) {
-          templates[device.mediaQuery] = device.viewTemplate;
-          device.loadTemplate = function (mql) {
-            if (mql.matches) {
-              element.html('<ng-include src="\'' + templates[mql.media] + '\'"></ng-include>').show();
-              $compile(element.contents())(scope);
-
-              if (!scope.$$phase) {
-                scope.$digest();
-              }
-            }
-          };
-
-          device.mql = $window.matchMedia(device.mediaQuery);
-          device.mql.addListener(device.loadTemplate);
-          device.loadTemplate(device.mql);
-        }
-      });
-
-      // remove all listeners on element destroy.
-      element.on('$destroy', function() {
         angular.forEach(devices, function(device) {
-          if (device.mql) {
-            device.mql.removeListener(device.loadTemplate);
+          device.viewTemplate = attrs[device.name];
+
+          if (device.viewTemplate) {
+            templates[device.mediaQuery] = device.viewTemplate;
+            device.loadTemplate = function (mql) {
+              if (mql.matches) {
+                element.html('<ng-include src="\'' + templates[mql.media] + '\'"></ng-include>').show();
+                $compile(element.contents())(scope);
+
+                if (!scope.$$phase) {
+                  scope.$digest();
+                }
+              }
+            };
+
+            device.mql = $window.matchMedia(device.mediaQuery);
+            device.mql.addListener(device.loadTemplate);
+            device.loadTemplate(device.mql);
           }
         });
-      });
-    };
 
-    return {
-      restrict: "E",
-      link: linker
-    };
-  });
+        // remove all listeners on element destroy.
+        element.on('$destroy', function() {
+          angular.forEach(devices, function(device) {
+            if (device.mql) {
+              device.mql.removeListener(device.loadTemplate);
+            }
+          });
+        });
+      };
 
-  module.provider('adaptiveConfig', function() {
-    var opts = {
-      devices: [
-        {
-          name: "desktop",
-          mediaQuery: "screen and (min-width: 768px)"
+      return {
+        restrict: "E",
+        link: linker
+      };
+    }])
+    .provider('adaptiveConfig', function() {
+      var opts = {
+        devices: [
+          {
+            name: "desktop",
+            mediaQuery: "screen and (min-width: 768px)"
+          },
+          {
+            name: "mobile",
+            mediaQuery: "screen and (max-width: 767px)"
+          }
+        ]
+      };
+
+      return {
+        config: function(newOpts) {
+          opts = newOpts;
         },
-        {
-          name: "mobile",
-          mediaQuery: "screen and (max-width: 767px)"
+        $get: function() {
+          return opts;
         }
-      ]
-    };
-
-    return {
-      config: function(newOpts) {
-        opts = newOpts;
-      },
-      $get: function() {
-        return opts;
-      }
-    };
-  });
+      };
+    });
 })();
