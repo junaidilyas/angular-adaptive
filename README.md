@@ -5,7 +5,7 @@ A hybrid between adaptive and responsive templating. Provides a directive to dyn
 ```
 bower install angular-adaptive --save
 ```
-* Include the supplied `angular-adaptive.min.js` script to you app.
+* Include the supplied `angular-adaptive.min.js` script in your HTML.
 ```html
 <script src="bower_components/angular-adaptive/dest/adaptive.min.js"></script>
 ```
@@ -57,9 +57,9 @@ By default, **angular-adaptive** provides two device configurations (`desktop` a
 ```html
 <adaptive desktop="views/desktop/entity.html" mobile="views/mobile/entity.html"></adaptive>
 ```
-# Support
+## Support
 This script uses the [matchMedia](https://github.com/paulirish/matchMedia.js) polyfill to suppport older versions of Internet Explorer.
-# License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2016 Junaid Ilyas
