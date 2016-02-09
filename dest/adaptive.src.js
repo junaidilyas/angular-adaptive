@@ -117,7 +117,7 @@ window.matchMedia || (window.matchMedia = function() {
             if (mql.matches) {
               element.html("<ng-include src=\"'" + templates[mql.media] + "'\"></ng-include>").show();
               $compile(element.contents())(scope);
-              if (!scope.$$phase) {
+              if (!scope.$root.$$phase) {
                 scope.$digest();
               }
             }
