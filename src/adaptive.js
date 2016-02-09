@@ -3,7 +3,7 @@
 
   /**
    * angular-adaptive - A hybrid between adaptive and responsive templating.
-   * @version v0.1.0
+   * @version v0.1.1
    * @link https://junaidilyas.github.io/angular-adaptive
    * @author Junaid Ilyas <junaidilyas1@gmail.com>
    * @license MIT License, http://www.opensource.org/licenses/MIT

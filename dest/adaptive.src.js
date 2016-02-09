@@ -1,4 +1,4 @@
-/*! angular-adaptive v0.1.0: A hybrid between adaptive and responsive templating. Provides a directive to dynamically load device specific templates in a responsive manner.
+/*! angular-adaptive v0.1.1: A hybrid between adaptive and responsive templating. Provides a directive to dynamically load device specific templates in a responsive manner.
  * Copyright 2016 Junaid Ilyas <junaidilyas1@gmail.com>
  * Licensed under MIT
  * https://junaidilyas.github.io/angular-adaptive */
@@ -100,7 +100,7 @@ window.matchMedia || (window.matchMedia = function() {
   "use strict";
   /**
    * angular-adaptive - A hybrid between adaptive and responsive templating.
-   * @version v0.1.0
+   * @version v0.1.1
    * @link https://junaidilyas.github.io/angular-adaptive
    * @author Junaid Ilyas <junaidilyas1@gmail.com>
    * @license MIT License, http://www.opensource.org/licenses/MIT
